@@ -11,10 +11,10 @@ This program converts a decimal number into different binary representations:
 
 ## Example Usage
 ### input:
-bit: 4
+bit: 4<br>
 decimal: -5
 
 ### Output:
-Sign and Magnitude's form: 1101
-1's complement form: 11010
-2's complement form: 11011
+Sign and Magnitude's form: 1101<br>
+1's complement form: 11010<br>
+2's complement form: 11011<br>
