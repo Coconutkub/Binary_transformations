@@ -13,6 +13,7 @@ This program converts a decimal number into different binary representations:
 ### input:
 bit: 4
 decimal: -5
+
 ### Output:
 Sign and Magnitude's form: 1101
 1's complement form: 11010
