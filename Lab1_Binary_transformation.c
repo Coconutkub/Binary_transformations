@@ -1,32 +1,34 @@
 #include <stdio.h>
 
-int TranformDtoB(int decimal,int bit,int Binary[]){
+void TranformDtoB(int decimal,int bit,int Binary[]){
 
     if(decimal < 0){
         decimal=decimal*-1;
     }
+
     for(int i=bit-1;i>=0;i--){
         if(decimal == 0){
             for(int j = i;j>=0;j--){
                 Binary[j] = 0;
             }
+            break;
         }
         Binary[i] = decimal % 2;
         decimal = decimal/2; 
     }
 }
 
-int TranformToSignMagnitude(int decimal,int Binary[],int bit){
+void TranformToSignMagnitude(int decimal,int Binary[],int bit){
     if(decimal < 0){
         Binary[0] = 1;
     }
-    printf("Sign and Magnitude's form: ");
+    printf("\nSign and Magnitude's form: ");
     for(int i=0;i<bit;i++){
         printf("%d",Binary[i]);
     }
 }
 
-int TranformTo1sComplement(int Binary[],int bit){
+void TranformTo1sComplement(int Binary[],int bit){
     for(int i=0;i<bit;i++){
         if(Binary[i]==0){
             Binary[i] = 1;
@@ -42,7 +44,8 @@ int TranformTo1sComplement(int Binary[],int bit){
     printf("\n");
 }
 
-int TranformTo2sComplement(int Binary[],int bit){
+void TranformTo2sComplement(int Binary[],int bit){
+    if (bit == 0) return;
     if(Binary[bit-1]==0){
         Binary[bit-1] = 1;
     }
@@ -66,17 +69,27 @@ int main(){
 
     printf("decimal: -%d to %d:",size-1,size-1);
     scanf("%d",&decimal);
-
+    if(decimal > size-1 || decimal < -(size-1)){
+        printf("it out of range");
+        return 0;
+    }
     int Binary[bit];
     
+
     TranformDtoB(decimal,bit,Binary);
+    printf("Binary form: ");
+    for(int i=0;i<bit;i++){
+        printf("%d",Binary[i]);
+    }
     TranformToSignMagnitude(decimal,Binary,bit);
     TranformDtoB(decimal,bit,Binary);
     TranformTo1sComplement(Binary,bit);
     TranformTo2sComplement(Binary,bit);
     
-    printf("2's complement form:");
+    printf("2's complement form: ");
     for(int i=0;i<bit;i++){
         printf("%d",Binary[i]);
     }
+
+    return 0;
 }
